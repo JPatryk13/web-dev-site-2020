@@ -89,6 +89,7 @@ eb-birt/
 venv/
 ENV/
 .vscode
+
 # Spyder project settings
 .spyderproject
 .spyproject
@@ -113,6 +114,9 @@ media/
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+
+# Production environment settings
+prod_settings.py
 
 # Ignore Django Migrations in Development if you are working on team
 
