@@ -1,0 +1,22 @@
+# elastic beanstalk files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# local sqlite database
+*.sqlite3
+
+# local settings
+local_settings.py
+
+# virtual environment
+eb-virt/
+
+# github stuff
+.git
+.gitignore
+*.md

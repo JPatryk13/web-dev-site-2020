@@ -52,7 +52,7 @@ coverage.xml
 
 # Django stuff:
 *.log
-local_settings.py
+prod_settings.py
 
 # Flask stuff:
 instance/
@@ -114,9 +114,7 @@ media/
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
-
-# Production environment settings
-prod_settings.py
+.ebextensions/*
 
 # Ignore Django Migrations in Development if you are working on team
 
