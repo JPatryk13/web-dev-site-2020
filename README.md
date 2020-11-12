@@ -81,5 +81,25 @@ Web development services entrepreneurship website.
 16. Makemigrations and migrate
 
 ### Backend (part 2):
+1. Add STATIC_ROOT in local_settings.py
+2. Add MEDIA_URL and MEDIA_ROOT in local_settings.py
+3. Install Pillow 8.0.1 and update requirements.txt
+4. Create projects model
+  -- Copied from the Portfolio project
+5. Makemigrations and migrate
+6. Check if the table was created
+  -- connect to the psql console (sudo -u postgres psql)
+  -- connect to the database (\\c webdevsite)
+  -- list tables (\\dt)
+  -- last two rows should display projects_link and projects_project
+7. Run python manage.py createsuperuser
+  -- patryk; jesionka.patryk13@gmail.com; 1234
+8. Register models in projects/admin.py via admin.site.register(<ModelName>)
+9. Run python manage.py collectstatic
+10. Check if it works going to localhost:8000/admin
+11. Create a test project(s) and link(s)
 
-###
+### Configure Database and Static files (on the server):
+Create database on EB
+Configure static files
+Test on EB
