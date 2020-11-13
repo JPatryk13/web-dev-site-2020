@@ -98,8 +98,47 @@ Web development services entrepreneurship website.
 9. Run python manage.py collectstatic
 10. Check if it works going to localhost:8000/admin
 11. Create a test project(s) and link(s)
+12. Add static dir to .gitignore
+13. Add static and media dirs and migrations to .ebignore
 
-### Configure Database and Static files (on the server):
-Create database on EB
-Configure static files
-Test on EB
+### Configure database and static/media files (on the server):
+1. Run eb deploy
+  -- encounter errors
+2. Add 00_packages.config
+3. Crash the whole environment by redoing eb deploy
+4. Remove 00_packages.config
+5. In requirements.txt rename psycopg2 to psycopg2-binary
+6. Run eb create
+7. Run eb status to get the CNAME
+8. Run eb deploy and eb logs to find IP that return error 404 - add it to prod_settings as well
+9. Crash the environment trying to add packages: yum: postgresql12-devel: []
+10. Clean up and start the environment again
+11. Change psycopg2 to psycopg2-binary and deploy
+12. Add 02_packages.config file with postgresql12-devel so that env.config has # 3
+13. Deploy and test
+14. Following AWS documentation set up RDS database instance
+  -- https://us-east-2.console.aws.amazon.com/elasticbeanstalk/home?region=us-east-2#/environment/dashboard?applicationName=webdevsite&environmentId=e-xxd6iswwqa
+15. Update prod_settings.py
+16. Restart app servers in the EB Console
+17. Run eb deploy
+18. Add container_commands: 00_makemigrations and 01_migrate: to the 01_python.config
+19. Run eb Deploy
+20. Add option_settings for static files and container_commands: 02_collectstatic:
+21. Update prod_settings.py for static files
+22. Run eb deploy
+23. Create a custom command that creates a super user with given details
+  -- https://docs.djangoproject.com/en/3.1/howto/custom-management-commands/
+  -- run python manage.py startapp s_user
+24. Create a dir structure inside of the app: management/commands/createsu.py
+25. Write a class to handle creating super user via User.objects.create_superuser()
+  -- user details given as environmental variables
+26. Add s_user app to prod_settings.py
+27. Write SU_NAME, SU_EMAIL, SU_PASSWORD variables into environment via eb console
+28. Write 03_createsuperuser into 01_python.config
+29. Run eb deploy and go to <url>/admin to log in
+30. Had a problem with reading static files. The formatting of config was off; that's the correct one:
+  -- aws:elasticbeanstalk:environment:proxy:staticfiles: /static: static
+
+Configure media files
+Create new secret key
+Transfer env variables to .config file
