@@ -138,6 +138,11 @@ Web development services entrepreneurship website.
 29. Run eb deploy and go to <url>/admin to log in
 30. Had a problem with reading static files. The formatting of config was off; that's the correct one:
   -- aws:elasticbeanstalk:environment:proxy:staticfiles: /static: static
+31. Go to the AWS S3 bucket (which is already created) and create a files/media directory structure
+32. Go to /.aws/credentials (or any other place with your aws credentials) and copy access key and key id to environment variables
+33. Install boto3 and django-storages
+34. Edit prod_settings.py
+  -- https://coderbook.com/@marcus/how-to-store-django-static-and-media-files-on-s3-in-production/
 
 Configure media files
 Create new secret key
